@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { View, FlatList, Alert, Image } from 'react-native';
 import { TextInput, Button, Text, Snackbar } from 'react-native-paper';
-import styles from './style';
 import { IconButton } from 'react-native-paper';
+import styles from './style';
+import { useTheme } from '../../Contexts/ThemeContext';
 import emptyStateImage from '../../../assets/images/empty-state.png';
 
 const Home = ({ items, setItems }) => {
+    const { colors } = useTheme();
     const [inputValue, setInputValue] = useState('');
     const [snackbarVisible, setSnackbarVisible] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
@@ -58,7 +61,6 @@ const Home = ({ items, setItems }) => {
                 setInputValue('');
                 setEditIndex(null);
             }
-
             return newItems;
         });
 
@@ -104,20 +106,24 @@ const Home = ({ items, setItems }) => {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: colors.headerBackground }]}>
+            <StatusBar backgroundColor={colors.headerBackground} style={colors.statusBarStyle} />
             <View style={styles.header}>
                 <TextInput
-                    label="Type something..."
                     value={inputValue}
                     onChangeText={setInputValue}
-                    style={styles.input}
+                    style={[styles.input]}
                     mode="outlined"
                 />
                 <Button
                     mode="contained"
                     onPress={handleAddOrEditItem}
-
-                    style={styles.button}
+                    style={[
+                        styles.button,
+                        {
+                          backgroundColor: inputValue.trim() ? colors.primary : colors.disabled,
+                        },
+                      ]}
                     disabled={!inputValue.trim()}
                 >
                     {editIndex !== null ? 'Edit' : 'Add'}
@@ -130,15 +136,15 @@ const Home = ({ items, setItems }) => {
                         style={styles.emptyImage}
                         resizeMode="contain"
                     />
-                    <Text style={styles.emptyText}>No Items yet!</Text>
+                    <Text style={[styles.emptyText, { color: colors.text }]}>No Items yet!</Text> 
                 </View>
             ) : (
                 <FlatList
                     data={items}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item, index }) => (
-                        <View style={styles.itemContainer}>
-                            <Text style={styles.item}>{item.text}</Text>
+                        <View style={[styles.itemContainer, { backgroundColor: colors.background }]}>
+                            <Text style={[styles.item, { color: colors.text }]}>{item.text}</Text> 
                             <View style={styles.iconsContainer}>
                                 <IconButton
                                     icon={item.favorite ? "star" : "star-outline"}
@@ -152,7 +158,6 @@ const Home = ({ items, setItems }) => {
                                     iconColor="#2196F3"
                                     onPress={() => handleEditItem(index)}
                                     style={styles.iconButton}
-
                                 />
                                 <IconButton
                                     icon="trash-can"
@@ -160,7 +165,6 @@ const Home = ({ items, setItems }) => {
                                     iconColor="red"
                                     onPress={() => showDeleteConfirmation(index)}
                                     style={styles.iconButton}
-
                                 />
                             </View>
                         </View>
@@ -181,7 +185,7 @@ const Home = ({ items, setItems }) => {
                     {snackbarMessage}
                 </Snackbar>
             </View>
-
+           
         </View>
     );
 };
