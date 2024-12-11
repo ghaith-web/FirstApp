@@ -14,6 +14,7 @@ import Favorites from "./App/Screens/Favorites";
 import NotificationsPage from "./App/Screens/Notifications"; // New Page
 import { ThemeProvider, useTheme } from "./App/Contexts/ThemeContext";
 import store from "./App/Redux/store";
+import AppIntro from "./App/Screens/AppIntro";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -233,7 +234,7 @@ const App = () => {
 export default () => (
   <Provider store={store}>
     <ThemeProvider>
-      <App />
+      <AppIntro />
     </ThemeProvider>
   </Provider>
 );
