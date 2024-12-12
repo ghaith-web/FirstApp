@@ -19,9 +19,7 @@ const Home = () => {
   const [deletedIndex, setDeletedIndex] = useState(null);
   const [editIndex, setEditIndex] = useState(null);
 
-  // Get items and favorites from Redux
   const items = useSelector((state) => state.items);
-  const favorites = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
 
   const handleAddOrEditItem = () => {
@@ -36,7 +34,7 @@ const Home = () => {
         setSnackbarMessage("Item updated!");
         setEditIndex(null);
       } else {
-        dispatch(addItem({ text: inputValue.trim(), favorite: false })); // default favorite status is false
+        dispatch(addItem({ text: inputValue.trim(), favorite: false }));
         setSnackbarMessage("Item added!");
       }
       setInputValue("");
@@ -76,6 +74,7 @@ const Home = () => {
       hideSnackbar();
     }
   };
+  
 
   const handleEditItem = (index) => {
     if (index < 0 || index >= items.length) return;
@@ -85,8 +84,6 @@ const Home = () => {
 
   const toggleFavorite = (index, item) => {
     const newItem = { ...item, favorite: !item.favorite };
-
-    // Update the item in the items list
     dispatch(editItem({ index, updatedItem: newItem }));
 
     if (newItem.favorite) {
@@ -188,10 +185,14 @@ const Home = () => {
           visible={snackbarVisible}
           onDismiss={hideSnackbar}
           duration={3000}
-          action={{
-            label: "Undo",
-            onPress: CancelToast,
-          }}
+          action={
+            deletedItem
+              ? {
+                  label: "Undo",
+                  onPress: CancelToast,
+                }
+              : null
+          }
         >
           {snackbarMessage}
         </Snackbar>

@@ -3,11 +3,12 @@ import { View, Image, TouchableOpacity, Dimensions,Text } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import styles from './styles';
 import Svg, { Path } from 'react-native-svg';
-import AppIntroStep2 from "../../../assets/images/AppIntroStep2.png";
-import AppIntroStep3 from "../../../assets/images/AppIntroStep3.png";
+import First from "../../../assets/images/1.png";
+import Second from "../../../assets/images/3.png";
+import third from "../../../assets/images/4.png";
 
 const { width, height } = Dimensions.get('window');
-const waveHeight = height * 0.75; // Define waveHeight to control the height of CurvedWave and other elements
+const waveHeight = height * 0.75;
 
 export default function AppIntro({ navigation }) {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,19 +19,19 @@ export default function AppIntro({ navigation }) {
             key: '1',
             title: 'Best Tips for Your Diet',
             text: 'Quisque sit amet sagittis erat. Duis pharetra cursus venenatis. Nulla maximus porta velit ut molestie.',
-            image: AppIntroStep3,
+            image: third,
         },
         {
             key: '2',
             title: 'Stay Fit and Healthy',
             text: 'Explore a variety of exercises that keep you active and healthy. Boost your energy and vitality with us.',
-            image: AppIntroStep2,
+            image: Second,
         },
         {
             key: '3',
             title: 'Join Our Community',
             text: 'Connect with like-minded people and share your progress. We are here to support you on your journey.',
-            image: AppIntroStep3,
+            image: First,
         },
     ];
 
@@ -72,7 +73,7 @@ export default function AppIntro({ navigation }) {
                 paddingHorizontal: 10,
                 backgroundColor: 'transparent',
             }}>
-                <Text style={[styles.title, { color: 'blue', marginBottom: 35, fontSize: 18 }]}>{item.title}</Text>
+                <Text style={[styles.title, { color: "#560CCE", marginBottom: 35, fontSize: 18 }]}>{item.title}</Text>
                 <Text style={[styles.text, { fontSize: 14, textAlign: 'center', }]}>{item.text}</Text>
             </View>
         </View>
@@ -101,7 +102,7 @@ export default function AppIntro({ navigation }) {
             {/* Border along the curved wave with transparency */}
             <Path
                 d={`M0 ${waveHeight / 4} Q${width * 0.25} ${waveHeight / 8}, ${width * 0.5} ${waveHeight / 5} T${width} 0`}
-                stroke='blue' // Primary color
+                stroke="#560CCE" // Primary color
                 strokeWidth="8"
                 opacity={0.4} // Set opacity to make it transparent
                 
@@ -121,12 +122,12 @@ export default function AppIntro({ navigation }) {
                 renderItem={renderSlide}
                 onSlideChange={(index) => setCurrentIndex(index)}
                 renderNextButton={() => (
-                    <TouchableOpacity style={[styles.button, { backgroundColor: 'blue' }]} onPress={handleNext}>
+                    <TouchableOpacity style={[styles.button, { backgroundColor: "#560CCE" }]} onPress={handleNext}>
                         <Text bold style={styles.buttonText}>Next</Text>
                     </TouchableOpacity>
                 )}
                 renderDoneButton={() => (
-                    <TouchableOpacity style={[styles.Startbutton, { backgroundColor: 'blue' }]} onPress={onDone}>
+                    <TouchableOpacity style={[styles.Startbutton, { backgroundColor: "#560CCE" }]} onPress={onDone}>
                         <Text bold style={styles.buttonText}>Get Started</Text>
                     </TouchableOpacity>
                 )}
@@ -137,7 +138,7 @@ export default function AppIntro({ navigation }) {
                     </TouchableOpacity>
                 )}
                 dotStyle={{ backgroundColor: '#d3d3d3' }}
-                activeDotStyle={{ backgroundColor: 'blue' }}
+                activeDotStyle={{ backgroundColor: "#560CCE" }}
             />
         </View>
     );

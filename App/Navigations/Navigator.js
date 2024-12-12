@@ -12,7 +12,7 @@ export default function Navigator() {
   const isLoggedIn = useSelector((state) => state.auth.isAuthenticated);
 
   return (
-    <NavigationContainer>
+   
       <RootStack.Navigator screenOptions={{ headerShown: false }}>
         {/* Show AppNavigator if logged in, otherwise show AuthNavigator */}
         <RootStack.Screen
@@ -20,6 +20,5 @@ export default function Navigator() {
           component={isLoggedIn ? AppNavigator : AuthNavigator}
         />
       </RootStack.Navigator>
-    </NavigationContainer>
   );
 }

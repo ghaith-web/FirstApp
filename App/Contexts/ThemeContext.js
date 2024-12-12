@@ -5,13 +5,13 @@ const lightTheme = {
   colors: {
     statusBarStyle: "dark",
     headerBackground: "#f8f8f8",
-    background: "#FFFFFF", // Add background color for components
+    background: "#FFFFFF",
     text: "#000000",
     drawerBackground: "#FFFFFF",
     iconColor: "#000000",
-    primary: "#6200EE", // Example primary color
-    secondary: "#03DAC6", // Example secondary color
-    disabled: "#9e9e9e", // Color when the button is disabled
+    primary: "#6200EE",
+    secondary: "#03DAC6",
+    disabled: "#9e9e9e",
     inactive: "black",
   },
   icons: {
@@ -26,13 +26,13 @@ const darkTheme = {
   colors: {
     statusBarStyle: "light",
     headerBackground: "#333",
-    background: "#121212", // Add background color for components
+    background: "#121212",
     text: "#FFFFFF",
     drawerBackground: "#121212",
     iconColor: "#FFFFFF",
-    primary: "#BB86FC", // Example primary color
-    secondary: "#03DAC6", // Example secondary color
-    disabled: "#b0bec5", // Color when the button is disabled
+    primary: "#BB86FC",
+    secondary: "#03DAC6",
+    disabled: "#b0bec5",
     inactive: "white",
   },
   icons: {
