@@ -15,6 +15,7 @@ import NotificationsPage from "./App/Screens/Notifications"; // New Page
 import { ThemeProvider, useTheme } from "./App/Contexts/ThemeContext";
 import store from "./App/Redux/store";
 import AppIntro from "./App/Screens/AppIntro";
+import Navigator from "./App/Navigations/Navigator";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -133,7 +134,7 @@ const BottomTabs = () => {
     </Tab.Navigator>
   );
 };
-
+/*
 const App = () => {
   const { colors, icons, toggleTheme } = useTheme();
 
@@ -230,11 +231,11 @@ const App = () => {
     </NavigationContainer>
   );
 };
-
+*/
 export default () => (
   <Provider store={store}>
     <ThemeProvider>
-      <AppIntro />
+      <Navigator />
     </ThemeProvider>
   </Provider>
 );

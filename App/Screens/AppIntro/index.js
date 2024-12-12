@@ -35,7 +35,7 @@ export default function AppIntro({ navigation }) {
     ];
 
     const onDone = () => {
-        navigation.navigate('Home');
+        navigation.navigate('Login');
     };
 
     const handleNext = () => {
